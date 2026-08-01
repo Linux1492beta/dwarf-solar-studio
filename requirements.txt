@@ -1,6 +1,8 @@
 streamlit
 astropy
-sunpy
+sunpy[map]
+reproject
+mpl-animators
 opencv-python-headless
 matplotlib
 numpy
