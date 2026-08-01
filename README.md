@@ -40,3 +40,8 @@ Um eine hohe wissenschaftliche Genauigkeit für spätere Langzeitstudien (wie da
 ```bash
 git clone [https://github.com/DEIN-BENUTZERNAME/dwarf-solar-studio.git](https://github.com/DEIN-BENUTZERNAME/dwarf-solar-studio.git)
 cd dwarf-solar-studio
+
+## Lizenz & Credits
+Entwicklung: [Dr. Michael Danielides / Linux1492beta]
+
+Datenreferenzen: SILSO / SIDC Royal Observatory of Belgium (Relativzahlen-Abgleich)
