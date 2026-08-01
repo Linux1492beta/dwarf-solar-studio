@@ -1,0 +1,23 @@
+Abhängigkeiten installieren
+===========================
+pip install -r requirements.txt
+
+Streamlit App starten
+=====================
+streamlit run app.py
+
+Requirements (requirements.txt)
+===============================
+streamlit
+astropy
+sunpy[map]
+reproject
+mpl-animators
+opencv-python-headless
+matplotlib
+numpy
+pywavelets
+requests
+scikit-image
+scikit-learn
+timezonefinder
