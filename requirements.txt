@@ -1,0 +1,11 @@
+streamlit
+astropy
+sunpy
+opencv-python-headless
+matplotlib
+numpy
+pywavelets
+requests
+scikit-image
+scikit-learn
+timezonefinder
