@@ -45,6 +45,7 @@ st.markdown(
 
 # ==========================================
 # MEHRSPRACHIGKEIT (TRANSLATIONS)
+# DE, EN, FI, JA, EL
 # ==========================================
 TRANSLATIONS = {
     "de": {
@@ -142,7 +143,151 @@ TRANSLATIONS = {
         "plot_north": "Solar North Up",
         "plot_measured": "R_Measured",
         "plot_area": "Area",
-    }
+    },
+    "fi": {
+        "lang_name": "🇫🇮 FI - Suomi",
+        "select_source": "📁 Valitse FITS-lähde",
+        "import_way": "Tuontitapa:",
+        "url_link": "StellarStudio Linkki (URL)",
+        "upload_file": "Lataa tiedosto",
+        "sample_file": "🖼️ Esimerkkikuva (musterbild.fits)",
+        "load_url_btn": "Hae URL & Lataa",
+        "load_sample_btn": "Lataa esimerkkikuva",
+        "telescope_settings": "🔭 Kaukoputken asetukset",
+        "mount_mode": "Jalustan tila analyysiä varten:",
+        "image_adj": "🎛️ Kuvan säätö",
+        "reset_btn": "🔄 Palauta liukusäätimet oletuksiin",
+        "brightness": "Kirkkaus",
+        "contrast": "Kontrasti",
+        "sharpness": "Terävyys",
+        "exposure": "Valotus",
+        "saturation": "Kylläisyys",
+        "device": "Laite",
+        "date_time": "Päivämäärä & Aika",
+        "exp_time": "Valotusaika",
+        "bw_1to1": "Mustavalkoinen (Keskitetty 1:1)",
+        "color_1to1": "Keltainen-Oranssi (Keskitetty 1:1)",
+        "dl_section": "💾 2K Super-Resolution Lataus (2048x2048)",
+        "dl_bw": "📥 Lataa MV 2K-kuva",
+        "dl_color": "📥 Lataa väri 2K-kuva",
+        "btn_analyze": "🔬 Analysoi aurinkokuva nyt",
+        "analyzing_spinner": "Analysoidaan pilkkuja FITS-raakadatasta & luodaan karttaa...",
+        "analysis_results": "🔍 Analyysin tulokset",
+        "rel_number": "Suhteellinen luku (R)",
+        "spots": "Yksittäiset pilkut (f)",
+        "groups": "Ryhmät (g)",
+        "area": "Pinta-ala (MSH)",
+        "dl_map": "📥 Lataa analyysikartta (PNG)",
+        "table_title": "📋 Auringonpilkkuryhmien yleiskatsaus",
+        "no_spots": "Auringon pinnalta ei havaittu pilkkuryhmiä.",
+        "log_info": "✅ Tulokset tallennettu automaattisesti tiedostoon dwarf_sonnen_log.csv.",
+        "sidebar_info": "👈 Valitse FITS-tiedosto sivupalkista.",
+        "col_group": "Ryhmä",
+        "col_class": "Luokka",
+        "col_lat": "Leveysaste",
+        "col_lon": "Pituusaste",
+        "col_area": "Pinta-ala (MSH)",
+        "col_spots": "Pilkut",
+        "plot_north": "Pohjoinen ylhäällä",
+        "plot_measured": "R_Mitattu",
+        "plot_area": "Pinta-ala",
+    },
+    "ja": {
+        "lang_name": "🇯🇵 JA - 日本語",
+        "select_source": "📁 FITSソースの選択",
+        "import_way": "インポート方法:",
+        "url_link": "StellarStudio リンク (URL)",
+        "upload_file": "ファイルをアップロード",
+        "sample_file": "🖼️ サンプル画像 (musterbild.fits)",
+        "load_url_btn": "URLを取得して読み込み",
+        "load_sample_btn": "サンプル画像を読み込み",
+        "telescope_settings": "🔭 望遠鏡の設定",
+        "mount_mode": "解析用架台モード:",
+        "image_adj": "🎛️ 画像調整",
+        "reset_btn": "🔄 スライダーを初期化",
+        "brightness": "明るさ",
+        "contrast": "コントラスト",
+        "sharpness": "シャープネス",
+        "exposure": "露出",
+        "saturation": "彩度",
+        "device": "撮影機器",
+        "date_time": "日時",
+        "exp_time": "露出時間",
+        "bw_1to1": "モノクロ (中央 1:1)",
+        "color_1to1": "イエロー・オレンジ (中央 1:1)",
+        "dl_section": "💾 2K超解像ダウンロード (2048x2048)",
+        "dl_bw": "📥 モノクロ2K画像をダウンロード",
+        "dl_color": "📥 カラー2K画像をダウンロード",
+        "btn_analyze": "🔬 太陽画像を解析",
+        "analyzing_spinner": "FITS生データから黒点を解析しマップを作成中...",
+        "analysis_results": "🔍 解析結果",
+        "rel_number": "相対数 (R)",
+        "spots": "単一黒点 (f)",
+        "groups": "群数 (g)",
+        "area": "面積 (MSH)",
+        "dl_map": "📥 解析マップをダウンロード (PNG)",
+        "table_title": "📋 太陽黒点群の一覧",
+        "no_spots": "太陽表面に黒点群は検出されませんでした。",
+        "log_info": "✅ 結果は dwarf_sonnen_log.csv に自動的に記録されました。",
+        "sidebar_info": "👈 サイドバーでFITSファイルを選択してください。",
+        "col_group": "グループ",
+        "col_class": "分類",
+        "col_lat": "緯度",
+        "col_lon": "経度",
+        "col_area": "面積 (MSH)",
+        "col_spots": "黒点数",
+        "plot_north": "太陽北極が上",
+        "plot_measured": "測定R値",
+        "plot_area": "面積",
+    },
+    "el": {
+        "lang_name": "🇬🇷 EL - Ελληνικά",
+        "select_source": "📁 Επιλογή Πηγής FITS",
+        "import_way": "Μέθοδος Εισαγωγής:",
+        "url_link": "Σύνδεσμος StellarStudio (URL)",
+        "upload_file": "Μεταφόρτωση Αρχείου",
+        "sample_file": "🖼️ Δείγμα Εικόνας (musterbild.fits)",
+        "load_url_btn": "Ανάκτηση URL & Φόρτωση",
+        "load_sample_btn": "Φόρτωση Δείγματος Εικόνας",
+        "telescope_settings": "🔭 Ρυθμίσεις Τηλεσκοπίου",
+        "mount_mode": "Λειτουργία Στήριξης για Ανάλυση:",
+        "image_adj": "🎛️ Προσαρμογή Εικόνας",
+        "reset_btn": "🔄 Επαναφορά Ρυθμιστικών στις Προεπιλογές",
+        "brightness": "Φωτεινότητα",
+        "contrast": "Αντίθεση",
+        "sharpness": "Οξύτητα",
+        "exposure": "Έκθεση",
+        "saturation": "Κορεσμός",
+        "device": "Συσκευή",
+        "date_time": "Ημερομηνία & Ώρα",
+        "exp_time": "Χρόνος Έκθεσης",
+        "bw_1to1": "Ασπρόμαυρο (Κεντραρισμένο 1:1)",
+        "color_1to1": "Κίτρινο-Πορτοκαλί (Κεντραρισμένο 1:1)",
+        "dl_section": "💾 Λήψη 2K Υψηλής Ανάλυσης (2048x2048)",
+        "dl_bw": "📥 Λήψη Ασπρόμαυρης Εικόνας 2K",
+        "dl_color": "📥 Λήψη Έγχρωμης Εικόνας 2K",
+        "btn_analyze": "🔬 Ανάλυση Ηλιακής Εικόνας Τώρα",
+        "analyzing_spinner": "Ανάλυση κηλίδων στα ανεπεξέργαστα δεδομένα FITS & δημιουργία χάρτη...",
+        "analysis_results": "🔍 Αποτελέσματα Ανάλυσης",
+        "rel_number": "Σχετικός Αριθμός (R)",
+        "spots": "Μεμονωμένες Κηλίδες (f)",
+        "groups": "Ομάδες (g)",
+        "area": "Έκταση (MSH)",
+        "dl_map": "📥 Λήψη Χάρτη Ανάλυσης (PNG)",
+        "table_title": "📋 Επισκόπηση Ομάδων Ηλιακών Κηλίδων",
+        "no_spots": "Δεν εντοπίστηκαν ομάδες ηλιακών κηλίδων στην επιφάνεια του Ήλιου.",
+        "log_info": "✅ Τα αποτελέσματα καταγράφηκαν αυτόματα στο dwarf_sonnen_log.csv.",
+        "sidebar_info": "👈 Παρακαλώ επιλέξτε ένα αρχείο FITS από την πλευρική στήλη.",
+        "col_group": "Ομάδα",
+        "col_class": "Κατηγορία",
+        "col_lat": "Πλάτος",
+        "col_lon": "Μήκος",
+        "col_area": "Έκταση (MSH)",
+        "col_spots": "Κηλίδες",
+        "plot_north": "Βόρειος Ηλιακός Πόλος Πάνω",
+        "plot_measured": "R_Μετρημένο",
+        "plot_area": "Έκταση",
+    },
 }
 
 # ==========================================
@@ -185,7 +330,9 @@ def reset_slider_values():
 
 
 def T(key):
-    lang_dict = TRANSLATIONS.get(st.session_state.lang, TRANSLATIONS.get("en", TRANSLATIONS["de"]))
+    lang_dict = TRANSLATIONS.get(
+        st.session_state.lang, TRANSLATIONS.get("en", TRANSLATIONS["de"])
+    )
     return lang_dict.get(key, key)
 
 
@@ -198,7 +345,9 @@ selected_lang_code = st.sidebar.selectbox(
     "Select Language:",
     options=lang_options,
     format_func=lambda x: TRANSLATIONS[x]["lang_name"],
-    index=lang_options.index(st.session_state.lang) if st.session_state.lang in lang_options else 0,
+    index=lang_options.index(st.session_state.lang)
+    if st.session_state.lang in lang_options
+    else 0,
     label_visibility="collapsed",
 )
 st.session_state.lang = selected_lang_code
@@ -277,11 +426,15 @@ def create_radial_solar_mask(img, core_radius_ratio=0.75, blur_radius=51):
 
     h, w = img.shape
     y_grid, x_grid = np.ogrid[:h, :w]
-    dist_from_center = np.sqrt((x_grid - center[0]) ** 2 + (y_grid - center[1]) ** 2)
+    dist_from_center = np.sqrt(
+        (x_grid - center[0]) ** 2 + (y_grid - center[1]) ** 2
+    )
     inner_r, outer_r = radius * core_radius_ratio, radius * 0.98
 
     mask = np.clip((outer_r - dist_from_center) / (outer_r - inner_r), 0, 1)
-    return cv2.GaussianBlur(mask.astype(np.float32), (blur_radius, blur_radius), 0)
+    return cv2.GaussianBlur(
+        mask.astype(np.float32), (blur_radius, blur_radius), 0
+    )
 
 
 def wavelet_sharpen(img, levels=3, weights=[1.6, 1.3, 1.0]):
@@ -295,7 +448,9 @@ def wavelet_sharpen(img, levels=3, weights=[1.6, 1.3, 1.0]):
 
 def enhance_to_2k(img_array, target_size=2048):
     resized = cv2.resize(
-        img_array, (target_size, target_size), interpolation=cv2.INTER_LANCZOS4
+        img_array,
+        (target_size, target_size),
+        interpolation=cv2.INTER_LANCZOS4,
     )
     blur = cv2.GaussianBlur(resized, (0, 0), sigmaX=1.5)
     return np.clip(cv2.addWeighted(resized, 1.35, blur, -0.35, 0), 0.0, 1.0)
@@ -396,10 +551,15 @@ def run_solar_analysis(img_raw_cropped, header, mount_mode="AZ", lang="de"):
         )[-2]
 
         if not contours:
-            return None, "Fehler: Die Sonnenscheibe konnte im Bild nicht erkannt werden."
+            return (
+                None,
+                "Fehler: Die Sonnenscheibe konnte im Bild nicht erkannt werden.",
+            )
 
         groesste_kontur = max(contours, key=cv2.contourArea)
-        (zentrum_x, zentrum_y), radius_px = cv2.minEnclosingCircle(groesste_kontur)
+        (zentrum_x, zentrum_y), radius_px = cv2.minEnclosingCircle(
+            groesste_kontur
+        )
 
         p_winkel = sun.P(aufnahme_zeit)
         if mount_mode == "EQ":
@@ -407,7 +567,9 @@ def run_solar_analysis(img_raw_cropped, header, mount_mode="AZ", lang="de"):
         else:
             sun_pos = get_sun(aufnahme_zeit)
             ha = (
-                aufnahme_zeit.sidereal_time("apparent", longitude=beobachtungsort.lon)
+                aufnahme_zeit.sidereal_time(
+                    "apparent", longitude=beobachtungsort.lon
+                )
                 - sun_pos.ra
             )
             dec = sun_pos.dec
@@ -417,7 +579,9 @@ def run_solar_analysis(img_raw_cropped, header, mount_mode="AZ", lang="de"):
             q_winkel = np.arctan2(y, x).to(u.deg)
 
         astronomischer_winkel = p_winkel + q_winkel
-        wahrer_radius_arcsec = sun.angular_radius(aufnahme_zeit).to(u.arcsec).value
+        wahrer_radius_arcsec = (
+            sun.angular_radius(aufnahme_zeit).to(u.arcsec).value
+        )
         pixel_skala = wahrer_radius_arcsec / radius_px
 
         meta = {
@@ -553,7 +717,7 @@ def run_solar_analysis(img_raw_cropped, header, mount_mode="AZ", lang="de"):
 
         R_relativ = (10 * g_count) + f_count
 
-        # Plausibilitätsprüfung mit ausführlicher Erklärung
+        # Plausibilitätsprüfung
         if R_relativ > 300 or g_count > 30 or f_count > 250:
             error_msg = (
                 f"❌ **Die Quelldatei kann nicht automatisch ausgewertet werden (Plausibilitätsfehler)**\n\n"
@@ -573,9 +737,15 @@ def run_solar_analysis(img_raw_cropped, header, mount_mode="AZ", lang="de"):
         ax.set_facecolor("black")
         rotierte_map.plot(axes=ax, cmap="gray", vmin=0, vmax=255)
         rotierte_map.draw_grid(
-            axes=ax, color="cyan", alpha=0.4, linewidth=0.8, grid_spacing=15 * u.deg
+            axes=ax,
+            color="cyan",
+            alpha=0.4,
+            linewidth=0.8,
+            grid_spacing=15 * u.deg,
         )
-        rotierte_map.draw_limb(axes=ax, color="yellow", alpha=0.6, linewidth=1.0)
+        rotierte_map.draw_limb(
+            axes=ax, color="yellow", alpha=0.6, linewidth=1.0
+        )
 
         farben = plt.colormaps["tab10"]
         for idx, d in enumerate(flecken_daten):
@@ -597,8 +767,10 @@ def run_solar_analysis(img_raw_cropped, header, mount_mode="AZ", lang="de"):
         ax.set_ylim(zentrum_rot_y - delta_px, zentrum_rot_y + delta_px)
 
         sidc_str = f" | R_SIDC={r_sidc}" if r_sidc is not None else ""
-        
-        lang_dict = TRANSLATIONS.get(lang, TRANSLATIONS["en"])
+
+        lang_dict = TRANSLATIONS.get(
+            lang, TRANSLATIONS.get("en", TRANSLATIONS["de"])
+        )
         t_north = lang_dict.get("plot_north", "Solar North Up")
         t_meas = lang_dict.get("plot_measured", "R_Measured")
         t_area = lang_dict.get("plot_area", "Area")
@@ -787,10 +959,16 @@ if st.session_state.raw_bytes is not None:
     val_exposure = st.session_state["val_exposure"]
     val_saturation = st.session_state["val_saturation"]
 
-    sharpened_full = val_blend * enhanced_base + (1.0 - val_blend) * cropped_base
-    base_bw = radial_mask * sharpened_full + (1.0 - radial_mask) * cropped_base
+    sharpened_full = (
+        val_blend * enhanced_base + (1.0 - val_blend) * cropped_base
+    )
+    base_bw = (
+        radial_mask * sharpened_full + (1.0 - radial_mask) * cropped_base
+    )
 
-    img_adj = np.clip((base_bw - 0.5) * val_contrast + 0.5 + val_brightness, 0, 1)
+    img_adj = np.clip(
+        (base_bw - 0.5) * val_contrast + 0.5 + val_brightness, 0, 1
+    )
     img_damped = np.clip(img_adj * val_exposure, 0, 1)
 
     # SW-Bild Array
@@ -826,7 +1004,7 @@ if st.session_state.raw_bytes is not None:
 
     # 4. BILDER ZEICHNEN
     col1, col2 = st.columns(2)
-    
+
     with col1:
         st.subheader(T("bw_1to1"))
         st.image(bw_rgb_8u, use_container_width=True)
@@ -860,7 +1038,7 @@ if st.session_state.raw_bytes is not None:
     # 5. ANALYSE-BLOCK
     st.markdown("---")
     col_l_dummy, col_btn_center, col_r_dummy = st.columns([1, 2, 1])
-    
+
     if col_btn_center.button(
         T("btn_analyze"),
         type="primary",
