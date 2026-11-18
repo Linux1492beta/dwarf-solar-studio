@@ -1,4 +1,5 @@
 import csv
+from datetime import datetime, timedelta
 from io import BytesIO
 import os
 from pathlib import Path
@@ -57,8 +58,20 @@ TRANSLATIONS = {
         "sample_file": "🖼️ Musterbild (musterbild.fits)",
         "load_url_btn": "URL Abrufen & Laden",
         "load_sample_btn": "Musterbild laden",
-        "telescope_settings": "🔭 Teleskop-Einstellungen",
+        "telescope_settings": "🔭 Teleskop- & Orts-Einstellungen",
         "mount_mode": "Montierungsmodus für Analyse:",
+        "obs_lat": "Breitengrad (Latitude, °N):",
+        "obs_lon": "Längengrad (Longitude, °E):",
+        "dst_mode": "Ortszeit-Modus (FITS-Header = LT):",
+        "dst_auto": "Automatisch (aus Ort und Datum)",
+        "dst_summer": "Sommerzeit (DST)",
+        "dst_winter": "Winterzeit (Normalzeit)",
+        "rot_offset": "Rotations-Offset (°):",
+        "tz_preview_title": "🕒 Zeit- & Winkel-Vorschau",
+        "tz_zone": "Zeitzone",
+        "tz_header_lt": "Header (LT)",
+        "tz_calc_utc": "Berechnet (UTC)",
+        "rot_total": "Drehung gesamt",
         "image_adj": "🎛️ Bildanpassung",
         "reset_btn": "🔄 Regler auf Standard zurücksetzen",
         "brightness": "Helligkeit",
@@ -67,7 +80,7 @@ TRANSLATIONS = {
         "exposure": "Belichtung",
         "saturation": "Sättigung",
         "device": "Aufnahmegerät",
-        "date_time": "Datum & Zeit",
+        "date_time": "Datum & Zeit (Header LT)",
         "exp_time": "Belichtung",
         "bw_1to1": "Schwarz-Weiß (Zentriert 1:1)",
         "color_1to1": "Gelb-Orange (Zentriert 1:1)",
@@ -105,8 +118,20 @@ TRANSLATIONS = {
         "sample_file": "🖼️ Sample Image (musterbild.fits)",
         "load_url_btn": "Fetch URL & Load",
         "load_sample_btn": "Load Sample Image",
-        "telescope_settings": "🔭 Telescope Settings",
+        "telescope_settings": "🔭 Telescope & Location Settings",
         "mount_mode": "Mount Mode for Analysis:",
+        "obs_lat": "Latitude (°N):",
+        "obs_lon": "Longitude (°E):",
+        "dst_mode": "Local Time Mode (FITS Header = LT):",
+        "dst_auto": "Automatic (from location and date)",
+        "dst_summer": "Daylight Saving Time (Summer)",
+        "dst_winter": "Standard Time (Winter)",
+        "rot_offset": "Rotation Offset (°):",
+        "tz_preview_title": "🕒 Time & Angle Preview",
+        "tz_zone": "Timezone",
+        "tz_header_lt": "Header (LT)",
+        "tz_calc_utc": "Calculated (UTC)",
+        "rot_total": "Total Rotation",
         "image_adj": "🎛️ Image Adjustment",
         "reset_btn": "🔄 Reset Sliders to Default",
         "brightness": "Brightness",
@@ -115,7 +140,7 @@ TRANSLATIONS = {
         "exposure": "Exposure",
         "saturation": "Saturation",
         "device": "Device",
-        "date_time": "Date & Time",
+        "date_time": "Date & Time (Header LT)",
         "exp_time": "Exposure",
         "bw_1to1": "Black & White (Centered 1:1)",
         "color_1to1": "Yellow-Orange (Centered 1:1)",
@@ -153,8 +178,20 @@ TRANSLATIONS = {
         "sample_file": "🖼️ Esimerkkikuva (musterbild.fits)",
         "load_url_btn": "Hae URL & Lataa",
         "load_sample_btn": "Lataa esimerkkikuva",
-        "telescope_settings": "🔭 Kaukoputken asetukset",
+        "telescope_settings": "🔭 Kaukoputki- & sijaintiasetukset",
         "mount_mode": "Jalustan tila analyysiä varten:",
+        "obs_lat": "Leveysaste (Latitude, °N):",
+        "obs_lon": "Pituusaste (Longitude, °E):",
+        "dst_mode": "Paikallisaika-tila (FITS-otsikko = LT):",
+        "dst_auto": "Automaattinen (paikasta ja päivämäärästä)",
+        "dst_summer": "Kesäaika (DST)",
+        "dst_winter": "Talviaika (Normaaliaika)",
+        "rot_offset": "Kiertokulman korjaus (°):",
+        "tz_preview_title": "🕒 Aika- & kulmaesikatselu",
+        "tz_zone": "Aikavyöhyke",
+        "tz_header_lt": "Otsikko (LT)",
+        "tz_calc_utc": "Laskettu (UTC)",
+        "rot_total": "Kierto yhteensä",
         "image_adj": "🎛️ Kuvan säätö",
         "reset_btn": "🔄 Palauta liukusäätimet oletuksiin",
         "brightness": "Kirkkaus",
@@ -163,7 +200,7 @@ TRANSLATIONS = {
         "exposure": "Valotus",
         "saturation": "Kylläisyys",
         "device": "Laite",
-        "date_time": "Päivämäärä & Aika",
+        "date_time": "Päivämäärä & Aika (Otsikko LT)",
         "exp_time": "Valotusaika",
         "bw_1to1": "Mustavalkoinen (Keskitetty 1:1)",
         "color_1to1": "Keltainen-Oranssi (Keskitetty 1:1)",
@@ -201,8 +238,20 @@ TRANSLATIONS = {
         "sample_file": "🖼️ サンプル画像 (musterbild.fits)",
         "load_url_btn": "URLを取得して読み込み",
         "load_sample_btn": "サンプル画像を読み込み",
-        "telescope_settings": "🔭 望遠鏡の設定",
+        "telescope_settings": "🔭 望遠鏡・観測地設定",
         "mount_mode": "解析用架台モード:",
+        "obs_lat": "緯度 (Latitude, °N):",
+        "obs_lon": "経度 (Longitude, °E):",
+        "dst_mode": "現地時間モード (FITSヘッダ = LT):",
+        "dst_auto": "自動 (場所と日付から判定)",
+        "dst_summer": "夏時間 (サマータイム)",
+        "dst_winter": "冬時間 (標準時)",
+        "rot_offset": "回転オフセット (°):",
+        "tz_preview_title": "🕒 時刻・回転角プレビュー",
+        "tz_zone": "タイムゾーン",
+        "tz_header_lt": "ヘッダ (LT)",
+        "tz_calc_utc": "計算値 (UTC)",
+        "rot_total": "合計回転角",
         "image_adj": "🎛️ 画像調整",
         "reset_btn": "🔄 スライダーを初期化",
         "brightness": "明るさ",
@@ -211,7 +260,7 @@ TRANSLATIONS = {
         "exposure": "露出",
         "saturation": "彩度",
         "device": "撮影機器",
-        "date_time": "日時",
+        "date_time": "日時 (ヘッダ LT)",
         "exp_time": "露出時間",
         "bw_1to1": "モノクロ (中央 1:1)",
         "color_1to1": "イエロー・オレンジ (中央 1:1)",
@@ -249,8 +298,20 @@ TRANSLATIONS = {
         "sample_file": "🖼️ Δείγμα Εικόνας (musterbild.fits)",
         "load_url_btn": "Ανάκτηση URL & Φόρτωση",
         "load_sample_btn": "Φόρτωση Δείγματος Εικόνας",
-        "telescope_settings": "🔭 Ρυθμίσεις Τηλεσκοπίου",
+        "telescope_settings": "🔭 Ρυθμίσεις Τηλεσκοπίου & Τοποθεσίας",
         "mount_mode": "Λειτουργία Στήριξης για Ανάλυση:",
+        "obs_lat": "Γεωγραφικό Πλάτος (°N):",
+        "obs_lon": "Γεωγραφικό Μήκος (°E):",
+        "dst_mode": "Λειτουργία Τοπικής Ώρας (Κεφαλίδα FITS = LT):",
+        "dst_auto": "Αυτόματο (από τοποθεσία και ημερομηνία)",
+        "dst_summer": "Θερινή Ώρα (DST)",
+        "dst_winter": "Χειμερινή Ώρα (Κανονική)",
+        "rot_offset": "Μετατόπιση Περιστροφής (°):",
+        "tz_preview_title": "🕒 Προεπισκόπηση Ώρας & Γωνίας",
+        "tz_zone": "Ζώνη Ώρας",
+        "tz_header_lt": "Κεφαλίδα (LT)",
+        "tz_calc_utc": "Υπολογισμένη (UTC)",
+        "rot_total": "Συνολική Περιστροφή",
         "image_adj": "🎛️ Προσαρμογή Εικόνας",
         "reset_btn": "🔄 Επαναφορά Ρυθμιστικών στις Προεπιλογές",
         "brightness": "Φωτεινότητα",
@@ -259,7 +320,7 @@ TRANSLATIONS = {
         "exposure": "Έκθεση",
         "saturation": "Κορεσμός",
         "device": "Συσκευή",
-        "date_time": "Ημερομηνία & Ώρα",
+        "date_time": "Ημερομηνία & Ώρα (Κεφαλίδα LT)",
         "exp_time": "Χρόνος Έκθεσης",
         "bw_1to1": "Ασπρόμαυρο (Κεντραρισμένο 1:1)",
         "color_1to1": "Κίτρινο-Πορτοκαλί (Κεντραρισμένο 1:1)",
@@ -299,6 +360,7 @@ GLOBAL_DEFAULTS = {
     "blend": 0.75,
     "exposure": 0.88,
     "saturation": 1.0,
+    "rot_offset": 0.0,
 }
 
 # Persistent im State verankern
@@ -316,6 +378,10 @@ if "analysis_results" not in st.session_state:
     st.session_state.analysis_results = None
 if "analysis_error" not in st.session_state:
     st.session_state.analysis_error = None
+if "obs_lat" not in st.session_state:
+    st.session_state.obs_lat = 53.946
+if "obs_lon" not in st.session_state:
+    st.session_state.obs_lon = 13.274
 
 
 # Callback-Funktionen zur sicheren Wertespeicherung bei Regler-Interaktion
@@ -327,6 +393,19 @@ def reset_slider_values():
     for key, val in GLOBAL_DEFAULTS.items():
         st.session_state[f"val_{key}"] = val
         st.session_state[f"slider_{key}"] = val
+
+
+def sync_location_from_fits(fits_bytes_data):
+    """Liest Koordinaten aus dem FITS-Header als Startwert aus, falls vorhanden."""
+    try:
+        with fits.open(BytesIO(fits_bytes_data)) as hdul:
+            hdr = hdul[0].header
+            if "SITELAT" in hdr:
+                st.session_state.obs_lat = float(hdr["SITELAT"])
+            if "SITELONG" in hdr:
+                st.session_state.obs_lon = float(hdr["SITELONG"])
+    except Exception:
+        pass
 
 
 def T(key):
@@ -522,21 +601,81 @@ def hole_sidc_relativzahl(datum):
     return None
 
 
-def run_solar_analysis(img_raw_cropped, header, mount_mode="AZ", lang="de"):
-    try:
-        lat_val = header.get("SITELAT", 53.946)
-        lon_val = header.get("SITELONG", 13.274)
-        beobachtungsort = EarthLocation(
-            lat=lat_val * u.deg, lon=lon_val * u.deg, height=50 * u.m
-        )
+def compute_utc_from_dwarf_lt(raw_astropy_time, lat_val, lon_val, dst_setting="auto"):
+    """
+    DWARF FITS speichern Lokalzeit (LT) im Feld DATE-OBS, obwohl es wie UTC formatiert ist.
+    Gibt (utc_time, tz_name, offset_hours) zurück.
+    """
+    tz_name = tf.timezone_at(lng=lon_val, lat=lat_val)
+    if not tz_name:
+        approx_offset_hours = round(lon_val / 15.0)
+        if dst_setting == "summer":
+            approx_offset_hours += 1
+        utc_time = raw_astropy_time - (approx_offset_hours * u.hour)
+        return utc_time, f"Geo-Approx (UTC{approx_offset_hours:+d})", float(approx_offset_hours)
 
+    tz = zoneinfo.ZoneInfo(tz_name)
+    dt_naive = raw_astropy_time.datetime
+
+    if dst_setting == "auto":
+        dt_local = dt_naive.replace(tzinfo=tz)
+        utc_offset_seconds = dt_local.utcoffset().total_seconds()
+    else:
+        jan_dt = datetime(dt_naive.year, 1, 1, 12, 0, tzinfo=tz)
+        std_offset = jan_dt.utcoffset() - (jan_dt.dst() or timedelta(0))
+        utc_offset_seconds = std_offset.total_seconds()
+        if dst_setting == "summer":
+            utc_offset_seconds += 3600.0
+
+    utc_time = raw_astropy_time - (utc_offset_seconds * u.second)
+    return utc_time, tz_name, utc_offset_seconds / 3600.0
+
+
+def compute_rotation_angles(aufnahme_zeit, lat_val, lon_val, mount_mode="AZ", rot_offset_deg=0.0):
+    """Berechnet P-Winkel, q-Winkel und die resultierende Gesamtdrehung in Grad."""
+    beobachtungsort = EarthLocation(
+        lat=lat_val * u.deg, lon=lon_val * u.deg, height=50 * u.m
+    )
+    p_winkel = sun.P(aufnahme_zeit)
+    if mount_mode == "EQ":
+        q_winkel = 0.0 * u.deg
+    else:
+        sun_pos = get_sun(aufnahme_zeit)
+        ha = (
+            aufnahme_zeit.sidereal_time(
+                "apparent", longitude=beobachtungsort.lon
+            )
+            - sun_pos.ra
+        )
+        dec = sun_pos.dec
+        lat = beobachtungsort.lat
+        y = np.sin(ha)
+        x = np.cos(dec) * np.tan(lat) - np.sin(dec) * np.cos(ha)
+        q_winkel = np.arctan2(y, x).to(u.deg)
+
+    p_deg = p_winkel.to(u.deg).value
+    q_deg = q_winkel.to(u.deg).value
+    total_deg = q_deg - p_deg + rot_offset_deg
+    return p_deg, q_deg, total_deg
+
+
+def run_solar_analysis(
+    img_raw_cropped,
+    header,
+    mount_mode="AZ",
+    lat_val=53.946,
+    lon_val=13.274,
+    dst_setting="auto",
+    rot_offset_deg=0.0,
+    lang="de",
+):
+    try:
         if "DATE-OBS" in header:
-            raw_astropy_time = Time(header["DATE-OBS"])
-            tz_name = tf.timezone_at(lng=lon_val, lat=lat_val) or "UTC"
-            dt_naive = raw_astropy_time.datetime
-            dt_local = dt_naive.replace(tzinfo=zoneinfo.ZoneInfo(tz_name))
-            utc_offset_seconds = dt_local.utcoffset().total_seconds()
-            aufnahme_zeit = raw_astropy_time - (utc_offset_seconds * u.second)
+            clean_date_obs = str(header["DATE-OBS"]).replace("Z", "")
+            raw_astropy_time = Time(clean_date_obs)
+            aufnahme_zeit, _, _ = compute_utc_from_dwarf_lt(
+                raw_astropy_time, lat_val, lon_val, dst_setting
+            )
         else:
             aufnahme_zeit = Time.now()
 
@@ -561,24 +700,10 @@ def run_solar_analysis(img_raw_cropped, header, mount_mode="AZ", lang="de"):
             groesste_kontur
         )
 
-        p_winkel = sun.P(aufnahme_zeit)
-        if mount_mode == "EQ":
-            q_winkel = 0.0 * u.deg
-        else:
-            sun_pos = get_sun(aufnahme_zeit)
-            ha = (
-                aufnahme_zeit.sidereal_time(
-                    "apparent", longitude=beobachtungsort.lon
-                )
-                - sun_pos.ra
-            )
-            dec = sun_pos.dec
-            lat = beobachtungsort.lat
-            y = np.sin(ha)
-            x = np.cos(dec) * np.tan(lat) - np.sin(dec) * np.cos(ha)
-            q_winkel = np.arctan2(y, x).to(u.deg)
+        p_deg, q_deg, total_rot_deg = compute_rotation_angles(
+            aufnahme_zeit, lat_val, lon_val, mount_mode, rot_offset_deg
+        )
 
-        astronomischer_winkel = p_winkel + q_winkel
         wahrer_radius_arcsec = (
             sun.angular_radius(aufnahme_zeit).to(u.arcsec).value
         )
@@ -594,7 +719,7 @@ def run_solar_analysis(img_raw_cropped, header, mount_mode="AZ", lang="de"):
             "crpix2": zentrum_y + 1,
             "crval1": 0,
             "crval2": 0,
-            "crota2": astronomischer_winkel.to(u.deg).value,
+            "crota2": total_rot_deg,
             "hglt_obs": sun.B0(aufnahme_zeit).value,
             "hgln_obs": sun.L0(aufnahme_zeit).value,
             "dsun_obs": sun.earth_distance(aufnahme_zeit).to(u.m).value,
@@ -776,7 +901,7 @@ def run_solar_analysis(img_raw_cropped, header, mount_mode="AZ", lang="de"):
         t_area = lang_dict.get("plot_area", "Area")
 
         ax.set_title(
-            f"{t_north} | {aufnahme_zeit.strftime('%Y-%m-%d %H:%M')} UTC\n"
+            f"{t_north} (Rot: {total_rot_deg:+.1f}°) | {aufnahme_zeit.strftime('%Y-%m-%d %H:%M')} UTC\n"
             f"{t_meas}={R_relativ:.0f} (g={g_count}, f={f_count}){sidc_str} | {t_area}: {gesamte_flaeche_msh:.0f} MSH",
             pad=15,
             fontsize=10,
@@ -822,6 +947,10 @@ def run_solar_analysis(img_raw_cropped, header, mount_mode="AZ", lang="de"):
             "r_sidc": r_sidc,
             "gruppen": gruppen_infos,
             "zeit": aufnahme_zeit.strftime("%Y-%m-%d %H:%M UTC"),
+            "p_deg": p_deg,
+            "q_deg": q_deg,
+            "offset_deg": rot_offset_deg,
+            "total_rot_deg": total_rot_deg,
         }
         return results, None
     except Exception as e:
@@ -849,6 +978,7 @@ if import_option == T("url_link"):
                 st.session_state.file_name_stem = Path(url).stem
                 st.session_state.analysis_results = None
                 st.session_state.analysis_error = None
+                sync_location_from_fits(r.content)
                 st.sidebar.success("OK!")
 
 elif import_option == T("upload_file"):
@@ -856,31 +986,85 @@ elif import_option == T("upload_file"):
         "FITS", type=["fits", "fit"], label_visibility="collapsed"
     )
     if uploaded:
-        st.session_state.raw_bytes = uploaded.read()
-        st.session_state.file_name_stem = Path(uploaded.name).stem
-        st.session_state.analysis_results = None
-        st.session_state.analysis_error = None
+        raw_data = uploaded.read()
+        if st.session_state.raw_bytes != raw_data:
+            st.session_state.raw_bytes = raw_data
+            st.session_state.file_name_stem = Path(uploaded.name).stem
+            st.session_state.analysis_results = None
+            st.session_state.analysis_error = None
+            sync_location_from_fits(raw_data)
 
 elif import_option == T("sample_file"):
     sample_path = Path(__file__).parent / "musterbild.fits"
     if st.sidebar.button(T("load_sample_btn"), use_container_width=True):
         if sample_path.exists():
             with open(sample_path, "rb") as f:
-                st.session_state.raw_bytes = f.read()
+                raw_data = f.read()
+            st.session_state.raw_bytes = raw_data
             st.session_state.file_name_stem = "musterbild"
             st.session_state.analysis_results = None
             st.session_state.analysis_error = None
+            sync_location_from_fits(raw_data)
             st.sidebar.success("OK! musterbild.fits geladen")
         else:
             st.sidebar.error("Fehler: 'musterbild.fits' wurde nicht gefunden.")
 
 st.sidebar.markdown("---")
 st.sidebar.subheader(T("telescope_settings"))
+
 mount_mode = st.sidebar.selectbox(
     T("mount_mode"),
     ["AZ (Alt-Azimutal)", "EQ (Parallaktisch)"],
 )
 selected_mount = "EQ" if "EQ" in mount_mode else "AZ"
+
+col_lat, col_lon = st.sidebar.columns(2)
+with col_lat:
+    user_lat = st.number_input(
+        T("obs_lat"),
+        min_value=-90.0,
+        max_value=90.0,
+        value=float(st.session_state.obs_lat),
+        step=0.01,
+        format="%.4f",
+        key="obs_lat",
+    )
+with col_lon:
+    user_lon = st.number_input(
+        T("obs_lon"),
+        min_value=-180.0,
+        max_value=180.0,
+        value=float(st.session_state.obs_lon),
+        step=0.01,
+        format="%.4f",
+        key="obs_lon",
+    )
+
+dst_options = ["auto", "summer", "winter"]
+dst_labels = {
+    "auto": T("dst_auto"),
+    "summer": T("dst_summer"),
+    "winter": T("dst_winter"),
+}
+selected_dst = st.sidebar.selectbox(
+    T("dst_mode"),
+    options=dst_options,
+    format_func=lambda x: dst_labels[x],
+    index=0,
+)
+
+# Rotations-Offset Regler
+st.sidebar.slider(
+    f"{T('rot_offset')} (Std: {GLOBAL_DEFAULTS['rot_offset']:.1f}°)",
+    -180.0,
+    180.0,
+    value=st.session_state["val_rot_offset"],
+    key="slider_rot_offset",
+    on_change=update_slider_val,
+    args=("rot_offset",),
+    step=0.5,
+)
+val_rot_offset = st.session_state["val_rot_offset"]
 
 # ==========================================
 # VERARBEITUNG & DISPLAY
@@ -890,6 +1074,29 @@ if st.session_state.raw_bytes is not None:
     cropped_base, enhanced_base, radial_mask, header = process_fits_data(
         st.session_state.raw_bytes
     )
+
+    # Zeit- & Winkel-Vorschau in der Seitenleiste anzeigen
+    if "DATE-OBS" in header:
+        try:
+            clean_date_obs = str(header["DATE-OBS"]).replace("Z", "")
+            raw_astropy_time = Time(clean_date_obs)
+            calc_utc, tz_name, offset_h = compute_utc_from_dwarf_lt(
+                raw_astropy_time, user_lat, user_lon, selected_dst
+            )
+            p_deg, q_deg, total_rot_deg = compute_rotation_angles(
+                calc_utc, user_lat, user_lon, selected_mount, val_rot_offset
+            )
+            offset_str = f"UTC{offset_h:+g}"
+            st.sidebar.info(
+                f"**{T('tz_preview_title')}**\n"
+                f"* **{T('tz_zone')}:** `{tz_name}` ({offset_str})\n"
+                f"* **{T('tz_header_lt')}:** `{raw_astropy_time.strftime('%Y-%m-%d %H:%M:%S')}`\n"
+                f"* **{T('tz_calc_utc')}:** `{calc_utc.strftime('%Y-%m-%d %H:%M:%S')}`\n"
+                f"* **P:** `{p_deg:+.2f}°` | **q:** `{q_deg:+.2f}°` | **Offset:** `{val_rot_offset:+.1f}°`\n"
+                f"* **{T('rot_total')} (`crota2`):** `{total_rot_deg:+.2f}°`"
+            )
+        except Exception:
+            pass
 
     st.sidebar.markdown("---")
     st.sidebar.subheader(T("image_adj"))
@@ -952,7 +1159,7 @@ if st.session_state.raw_bytes is not None:
         step=0.05,
     )
 
-    # 2. BERECHNUNG MIT GARANTIERT PERSISTENTEN WERATEN
+    # 2. BERECHNUNG MIT GARANTIERT PERSISTENTEN WERTEN
     val_brightness = st.session_state["val_brightness"]
     val_contrast = st.session_state["val_contrast"]
     val_blend = st.session_state["val_blend"]
@@ -993,9 +1200,9 @@ if st.session_state.raw_bytes is not None:
     raw_date = str(header.get("DATE-OBS", "N/A"))
     if "T" in raw_date:
         d_part, t_part = raw_date.split("T")
-        date_str = f"{d_part} {t_part.replace('Z', '')} UTC"
+        date_str = f"{d_part} {t_part.replace('Z', '')} LT"
     else:
-        date_str = f"{raw_date} UTC" if raw_date != "N/A" else "N/A"
+        date_str = f"{raw_date} LT" if raw_date != "N/A" else "N/A"
     exp = header.get("EXPOSURE", header.get("EXPTIME", "N/A"))
 
     st.info(
@@ -1049,6 +1256,10 @@ if st.session_state.raw_bytes is not None:
                 cropped_base,
                 header,
                 mount_mode=selected_mount,
+                lat_val=user_lat,
+                lon_val=user_lon,
+                dst_setting=selected_dst,
+                rot_offset_deg=val_rot_offset,
                 lang=st.session_state.lang,
             )
             if err:
